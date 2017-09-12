@@ -11,6 +11,8 @@
 <glyph glyph-name="play" unicode="&#xe802;" d="M0-146l0 992 501-496z m0 0l501 496 134-133-202-117-433-250 0 4z m0 992l0 4 433-250 202-117-134-133z m501-496l134 133 231-133-231-133z" horiz-adv-x="866" />
 
 <glyph glyph-name="pause" unicode="&#xe804;" d="M18-97l0 894 223 0 0-894-223 0z m446 0l0 894 224 0 0-894-224 0z" horiz-adv-x="705" />
+
+<glyph glyph-name="down" unicode="&#xf0dd;" d="M571 243q0-15-10-25l-250-250q-11-11-25-11t-25 11l-250 250q-11 10-11 25t11 25 25 11h500q14 0 25-11t10-25z" horiz-adv-x="571.4" />
 </font>
 </defs>
 </svg>

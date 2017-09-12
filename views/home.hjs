@@ -18,9 +18,10 @@
       </div>
       <br>
       <div id="seekStamp">0:00</div>
+      <i class="icon-down" id="downArrow" aria-hidden="true"></i>
       <p id="timer">0:00</p>
       <p id="duration">00:00</p>
-      <div id="seekContainer"><div id="seekBg"><div id="seek"></div><div id="seeker"></div></div></div>
+      <div id="seekContainer"><div id="seekBg"><div id="seek"></div><div id="knob"></div><div id="seeker"></div></div></div>
     </div>
   </body>
   <link rel="stylesheet" href="/css/style.css">

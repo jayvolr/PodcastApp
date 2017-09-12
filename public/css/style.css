@@ -8,6 +8,12 @@
   right: 0;
   font-family: sans-serif;
   background-color: #F2F2F2;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #seekContainer {
@@ -33,7 +39,7 @@
   z-index: 2;
   height: inherit;
   width: 0px;
-  background-color: #65d8ed;
+  background-color: #e7891b;
   float: left;
 }
 
@@ -42,18 +48,20 @@
   position: fixed;
   z-index: 1;
   left: 10px;
-  background-color: #abe8e8;
+  background-color: #e8c8ab;
   display: none;
 }
 
 #seekStamp {
-  background-color: #65d8ed;
+  background-color: #e7891b;
   color: white;
   position: absolute;
   display: none;
   font-size: 15px;
-  margin-top: -10px;
+  margin-top: -8px;
   padding: 4px;
+  border-radius: 5px;
+  pointer-events: none;
 }
 
 p {
@@ -62,7 +70,7 @@ p {
 }
 
 button {
-  color: #65d8ed;
+  color: #e7891b;
   padding-bottom: 5px;
   border: none;
   background-color: rgba(255, 255, 255, 0);
@@ -87,17 +95,37 @@ button:focus {
   font-size: 26px;
 }
 
-button:hover {
-
-}
-
 #timer {
   float: left;
-  color: #65d8ed;
+  color: #e7891b;
   margin: 10px 0 0;
+  cursor: default;
 }
 
 #duration {
   float: right;
   margin: 10px 0 0;
+  cursor: default;
+}
+
+#downArrow {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  clear: both;
+  margin-top: 6px;
+  color: #e7891b;
+}
+
+#knob {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: -5px;
+  z-index: 3;
+  background-color: #fff;
+  border: 2px solid #e7891b;
+  transform: scale(0);
+  transition: transform .1s cubic-bezier(.3,0,.7,1);
 }

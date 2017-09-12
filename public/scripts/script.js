@@ -1,4 +1,5 @@
 var seekContainer = document.getElementById('seekContainer');
+var container = document.getElementById('container');
 var pauseBtn = document.getElementById('pauseBtn');
 var playBtn = document.getElementById('playBtn');
 var skipForward = document.getElementById('skipForward');
@@ -8,7 +9,13 @@ var seekBg = document.getElementById('seekBg');
 var seeker = document.getElementById('seeker');
 var seekStamp = document.getElementById('seekStamp');
 var duration = document.getElementById('duration');
+var downArrow = document.getElementById('downArrow');
 var timer = document.getElementById('timer');
+var knob = document.getElementById('knob');
+var body = document.getElementsByTagName('body')[0];
+var buttons = document.getElementById('buttons');
+
+var seeking = false;
 
 console.log(seekBg.attributes);
 
@@ -26,6 +33,9 @@ function formatTime(secs) {
 
 function update() {
   seekBar.style.width = (sound.seek() / sound.duration()) * 100 + '%';
+  if (!seeking) {
+    knob.style.left = seekBar.clientWidth + 3 + 'px';
+  }
   timer.textContent = formatTime(Math.round(sound.seek()));
 }
 
@@ -78,21 +88,52 @@ skipBackward.addEventListener('click', (e) => {
 
 document.addEventListener('mousemove', (e) => {
   seeker.style.right = window.innerWidth - e.x + 'px';
-  seekStamp.textContent = formatTime(Math.round((seeker.clientWidth / seekBg.clientWidth) * sound.duration()));
-  seekStamp.style.right = (window.innerWidth - e.x) - (seekStamp.clientWidth / 2) + 'px';
+  seekStamp.innerHTML = formatTime(Math.round((seeker.clientWidth / seekBg.clientWidth) * sound.duration()));
+  var dist = (window.innerWidth - e.x) - (seekStamp.clientWidth / 2);
+  if (dist < 0) {
+    seekStamp.style.right = '0px';
+  }else if (dist > window.innerWidth - seekStamp.clientWidth) {
+    seekStamp.style.right = window.innerWidth - seekStamp.clientWidth + 'px';
+  }else {
+    seekStamp.style.right = (window.innerWidth - e.x) - (seekStamp.clientWidth / 2) + 'px';
+  }
+  downArrow.style.right = (window.innerWidth - e.x) - (downArrow.clientWidth / 2) + 'px';
+  if (seeking) {
+    knob.style.left = seeker.clientWidth + 3 + 'px';
+  }
 });
 
 seekContainer.addEventListener('mouseenter', (e) => {
   seeker.style.display = 'block';
+  knob.style.transform = 'scale(1)';
+  downArrow.style.display = 'block';
   seekStamp.style.display = 'inline-block';
 });
 
 seekContainer.addEventListener('mouseleave', (e) => {
   seeker.style.display = 'none';
+  knob.style.transform = 'scale(0)';
   seekStamp.style.display = 'none';
+  downArrow.style.display = 'none';
 });
 
 seekContainer.addEventListener('click', (e) => {
   sound.seek((seeker.clientWidth / seekBg.clientWidth) * sound.duration());
   update();
+});
+
+knob.addEventListener('mousedown', (e) => {
+  seeker.style.backgroundColor = '#e7891b';
+  seekBar.style.display = 'none';
+  buttons.style.pointerEvents = 'none';
+  seeking = true;
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (seeking) {
+    seeker.style.backgroundColor = '#e8c8ab';
+    seekBar.style.display = 'block';
+    buttons.style.pointerEvents = 'auto';
+    seeking = false;
+  }
 });
