@@ -1,2 +1,2 @@
 # PodcastApp
-Testing out the itunes api to see how easily I could make a web-based podcast manager
+Testing out podcast apis to see how easily I could make a web-based podcast manager
