@@ -1,0 +1,103 @@
+#container {
+  padding: 15px 10px 20px 10px;
+  border-top: 1px solid #c1c1c1;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: sans-serif;
+  background-color: #F2F2F2;
+}
+
+#seekContainer {
+  height: 40px;
+  margin-bottom: -25px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+#seekBg {
+  width: 100%;
+  background-color: #c7c7c7;
+  height: 4px;
+  overflow: hidden;
+}
+
+#buttons {
+  margin-bottom: -40px;
+}
+
+#seek {
+  position: relative;
+  z-index: 2;
+  height: inherit;
+  width: 0px;
+  background-color: #65d8ed;
+  float: left;
+}
+
+#seeker {
+  height: inherit;
+  position: fixed;
+  z-index: 1;
+  left: 10px;
+  background-color: #abe8e8;
+  display: none;
+}
+
+#seekStamp {
+  background-color: #65d8ed;
+  color: white;
+  position: absolute;
+  display: none;
+  font-size: 15px;
+  margin-top: -10px;
+  padding: 4px;
+}
+
+p {
+  font-size: 14px;
+  color: gray;
+}
+
+button {
+  color: #65d8ed;
+  padding-bottom: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+#skipBackward {
+  transform: scale(-1, 1);
+}
+
+#playBtn {
+  display: none;
+  font-size: 26px;
+}
+
+#pauseBtn {
+  font-size: 26px;
+}
+
+button:hover {
+
+}
+
+#timer {
+  float: left;
+  color: #65d8ed;
+  margin: 10px 0 0;
+}
+
+#duration {
+  float: right;
+  margin: 10px 0 0;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "PodcastApp",
+  "version": "1.0.0",
+  "description": "Testing out the itunes api to see how easily I could make a web-based podcast manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayvolr/PodcastApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayvolr/PodcastApp/issues"
+  },
+  "homepage": "https://github.com/jayvolr/PodcastApp#readme",
+  "dependencies": {
+    "audiosearch-client-node": "^1.0.1",
+    "body-parser": "^1.18.0",
+    "express": "^4.15.4",
+    "hjs": "0.0.6"
+  }
+}
