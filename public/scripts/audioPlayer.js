@@ -1,59 +1,41 @@
-var seekContainer = document.getElementById('seekContainer');
-var container = document.getElementById('container');
-var pauseBtn = document.getElementById('pauseBtn');
-var playBtn = document.getElementById('playBtn');
-var skipForward = document.getElementById('skipForward');
-var skipBackward = document.getElementById('skipBackward');
-var seekBar = document.getElementById('seek');
-var seekBg = document.getElementById('seekBg');
-var seeker = document.getElementById('seeker');
-var seekStamp = document.getElementById('seekStamp');
-var duration = document.getElementById('duration');
-var downArrow = document.getElementById('downArrow');
-var timer = document.getElementById('timer');
-var knob = document.getElementById('knob');
-var body = document.getElementsByTagName('body')[0];
-var buttons = document.getElementById('buttons');
-
-var seeking = false;
-
-console.log(seekBg.attributes);
+var audioPlayer = document.getElementById('audioPlayer');
 
 var sound = new Howl({
-  src: ['https://www.audiosear.ch/media/e1c4e8377ef952b65aa327777af6a206/0/public/audio_file/607461/dchha50_Blueprint_for_Armageddon_I.mp3'],
+  src: [audioPlayer.getAttribute('src')],
   html5: true
 });
 
 function formatTime(secs) {
   var minutes = Math.floor(secs / 60) || 0;
   var seconds = (secs - minutes * 60) || 0;
-
   return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 }
 
+var progress = document.getElementById('progress');
+var timer = document.getElementById('timer');
+var knob = document.getElementById('knob');
+var seeking = false;
+
 function update() {
-  seekBar.style.width = (sound.seek() / sound.duration()) * 100 + '%';
+  progress.style.width = (sound.seek() / sound.duration()) * 100 + '%';
   if (!seeking) {
-    knob.style.left = seekBar.clientWidth + 3 + 'px';
+    knob.style.left = progress.clientWidth + 3 + 'px';
   }
   timer.textContent = formatTime(Math.round(sound.seek()));
 }
 
-var seekInterval = setInterval(update, 1000);
+setInterval(update, 1000);
 
-sound.on('play', () => {
-  console.log('playing');
-});
-
-sound.on('pause', () => {
-  console.log('paused');
-});
+var duration = document.getElementById('duration');
 
 sound.on('load', () => {
   duration.textContent = formatTime(Math.round(sound.duration()));
-  sound.play();
+  //sound.play();
   update();
 })
+
+var pauseBtn = document.getElementById('pauseBtn');
+var playBtn = document.getElementById('playBtn');
 
 pauseBtn.addEventListener('click', (e) => {
   sound.pause();
@@ -67,6 +49,8 @@ playBtn.addEventListener('click', (e) => {
   pauseBtn.style.display = 'inline-block';
 });
 
+var skipForward = document.getElementById('skipForward');
+
 skipForward.addEventListener('click', (e) => {
   if (sound.seek() + 15 > sound.duration()) {
     sound.seek(sound.duration())
@@ -75,6 +59,8 @@ skipForward.addEventListener('click', (e) => {
   }
   update()
 });
+
+var skipBackward = document.getElementById('skipBackward');
 
 skipBackward.addEventListener('click', (e) => {
   if (sound.seek() - 15 < 0) {
@@ -85,10 +71,14 @@ skipBackward.addEventListener('click', (e) => {
   update()
 });
 
+var emptyBar = document.getElementById('emptyBar');
+var seeker = document.getElementById('seeker');
+var seekStamp = document.getElementById('seekStamp');
+var downArrow = document.getElementById('downArrow');
 
 document.addEventListener('mousemove', (e) => {
   seeker.style.right = window.innerWidth - e.x + 'px';
-  seekStamp.innerHTML = formatTime(Math.round((seeker.clientWidth / seekBg.clientWidth) * sound.duration()));
+  seekStamp.innerHTML = formatTime(Math.round((seeker.clientWidth / emptyBar.clientWidth) * sound.duration()));
   var dist = (window.innerWidth - e.x) - (seekStamp.clientWidth / 2);
   if (dist < 0) {
     seekStamp.style.right = '0px';
@@ -103,37 +93,41 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 
-seekContainer.addEventListener('mouseenter', (e) => {
+var seekBarContainer = document.getElementById('seekBarContainer');
+
+seekBarContainer.addEventListener('mouseenter', (e) => {
   seeker.style.display = 'block';
   knob.style.transform = 'scale(1)';
   downArrow.style.display = 'block';
   seekStamp.style.display = 'inline-block';
 });
 
-seekContainer.addEventListener('mouseleave', (e) => {
+seekBarContainer.addEventListener('mouseleave', (e) => {
   seeker.style.display = 'none';
   knob.style.transform = 'scale(0)';
   seekStamp.style.display = 'none';
   downArrow.style.display = 'none';
 });
 
-seekContainer.addEventListener('click', (e) => {
-  sound.seek((seeker.clientWidth / seekBg.clientWidth) * sound.duration());
+seekBarContainer.addEventListener('click', (e) => {
+  sound.seek((seeker.clientWidth / emptyBar.clientWidth) * sound.duration());
   update();
 });
 
+var controls = document.getElementById('controls');
+
 knob.addEventListener('mousedown', (e) => {
   seeker.style.backgroundColor = '#e7891b';
-  seekBar.style.display = 'none';
-  buttons.style.pointerEvents = 'none';
+  progress.style.display = 'none';
+  controls.style.pointerEvents = 'none';
   seeking = true;
 });
 
 document.addEventListener('mouseup', (e) => {
   if (seeking) {
     seeker.style.backgroundColor = '#e8c8ab';
-    seekBar.style.display = 'block';
-    buttons.style.pointerEvents = 'auto';
+    progress.style.display = 'block';
+    controls.style.pointerEvents = 'auto';
     seeking = false;
   }
 });

@@ -1,0 +1,13 @@
+<div id="audioPlayer" src={{audioSrc}}>
+  <div id="controls">
+    <button type="button" title="Back 15s" id="skipBackward"><i class="icon-skip skip" aria-hidden="true"></i></button>
+    <button type="button" title="Pause" id="pauseBtn"><i class="icon-pause" aria-hidden="true"></i></button>
+    <button type="button" title="Play" id="playBtn"><i class="icon-play" aria-hidden="true"></i></button>
+    <button type="button" title="Forward 15s" id="skipForward"><i class="icon-skip skip" aria-hidden="true"></i></button>
+  </div>
+  <div id="seekStamp">0:00</div>
+  <i class="icon-down" id="downArrow" aria-hidden="true"></i>
+  <p id="timer">0:00</p>
+  <p id="duration">00:00</p>
+  <div id="seekBarContainer"><div id="emptyBar"><div id="progress"></div><div id="knob"></div><div id="seeker"></div></div></div>
+</div>

@@ -1,0 +1,6 @@
+  </body>
+</html>
+<link rel="stylesheet" href="/css/audioPlayer.css">
+<link rel="stylesheet" href="/css/fontello.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.core.min.js" charset="utf-8"></script>
+<script src="/scripts/audioPlayer.js" charset="utf-8"></script>

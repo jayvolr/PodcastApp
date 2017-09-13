@@ -1,31 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>PodcastApp</title>
-  </head>
-  <body>
-    <!-- <form action="search" method="post">
-      <input type="text" name="term" placeholder="Search">
-      <input type="submit" value="submit">
-    </form> -->
-    <div id="container">
-      <div id="buttons">
-        <button type="button" title="Back 15s" id="skipBackward"><i class="icon-skip skip" aria-hidden="true"></i></button>
-        <button type="button" title="Pause" id="pauseBtn"><i class="icon-pause" aria-hidden="true"></i></button>
-        <button type="button" title="Play" id="playBtn"><i class="icon-play" aria-hidden="true"></i></button>
-        <button type="button" title="Forward 15s" id="skipForward"><i class="icon-skip skip" aria-hidden="true"></i></button>
-      </div>
-      <br>
-      <div id="seekStamp">0:00</div>
-      <i class="icon-down" id="downArrow" aria-hidden="true"></i>
-      <p id="timer">0:00</p>
-      <p id="duration">00:00</p>
-      <div id="seekContainer"><div id="seekBg"><div id="seek"></div><div id="knob"></div><div id="seeker"></div></div></div>
-    </div>
-  </body>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/fontello.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.core.min.js" charset="utf-8"></script>
-  <script src="/scripts/script.js" charset="utf-8"></script>
-</html>
+{{>header}}
+  {{>navbar}}
+  <h1>Home</h1>
+  {{>audioPlayer}}
+{{>footer}}

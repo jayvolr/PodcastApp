@@ -1,4 +1,4 @@
-#container {
+#audioPlayer {
   padding: 15px 10px 20px 10px;
   border-top: 1px solid #c1c1c1;
   text-align: center;
@@ -16,25 +16,25 @@
   user-select: none;
 }
 
-#seekContainer {
+#seekBarContainer {
   height: 40px;
   margin-bottom: -25px;
   padding-top: 8px;
   cursor: pointer;
 }
 
-#seekBg {
+#emptyBar {
   width: 100%;
   background-color: #c7c7c7;
   height: 4px;
   overflow: hidden;
 }
 
-#buttons {
-  margin-bottom: -40px;
+#controls {
+  margin-bottom: -15px;
 }
 
-#seek {
+#progress {
   position: relative;
   z-index: 2;
   height: inherit;
@@ -87,11 +87,11 @@ button:focus {
 }
 
 #playBtn {
-  display: none;
   font-size: 26px;
 }
 
 #pauseBtn {
+  display: none;
   font-size: 26px;
 }
 
